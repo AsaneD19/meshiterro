@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root to: "homes#top"
+  resources :post_images, only: [:new, :create, :index, :show, :destroy]
+  devise_for :users
+  root  "homes#top"
   get 'homes/top'
+  get "homes/about" => "homes#about", as: "about"
 end
